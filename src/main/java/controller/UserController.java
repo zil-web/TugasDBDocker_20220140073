@@ -12,7 +12,7 @@ import java.util.List;
 public class UserController {
 
 
-    private final UserService userService;{
+    private final UserService userService = null;{
         this.userService = userService;
     }
 
@@ -31,6 +31,11 @@ public class UserController {
     public String deleteUser(@PathVariable String id) {
         userService.deleteUser(id);
         return "User deleted successfully";
+    }
+    @PutMapping
+    public String updateUser(@PathVariable String id, @RequestBody User request) {
+        userService.updateUser(id. request);
+        return "User updated successfully";
     }
 }
 
