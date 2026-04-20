@@ -4,7 +4,7 @@ import repository.UserRepository;
 
 import java.util.UUID;
 import java.util.list;
-import java.util.WID;
+import java.util.UUID;
 
 public class UserService {
     private final UserRepository userRepository;
