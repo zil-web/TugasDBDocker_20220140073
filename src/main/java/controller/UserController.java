@@ -2,24 +2,22 @@ package controller;
 
 import model.User;
 import org.springframework.web.bind.annotation.*;
-import repository.UserRepository;
 import service.UserService;
-
 import java.util.List;
 
 @RestController
-@RequestMapping(*/apl/users*)
+@RequestMapping("/api/users")
 public class UserController {
+    private final UserService userService ;
 
-
-    private final UserService userService = null;{
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
     @PostMapping
     public String createUser(@RequestBody User request) {
-        UserService.addUSer(request);
-        return "User created seuccesfully";
+        userService.addUser(request);
+        return "User created successfully";
     }
 
     @GetMapping
@@ -27,14 +25,14 @@ public class UserController {
         return  userService.getAllUsers();
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable String id) {
         userService.deleteUser(id);
         return "User deleted successfully";
     }
-    @PutMapping
+    @PutMapping("/{id}")
     public String updateUser(@PathVariable String id, @RequestBody User request) {
-        userService.updateUser(id. request);
+        userService.updateUser(id, request);
         return "User updated successfully";
     }
 }
